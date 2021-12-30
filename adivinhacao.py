@@ -5,7 +5,7 @@ print("*********************************")
 numero_secreto = 42
 total_tentativas = 3
 
-for rodada in range(1, total_tentativas):
+for rodada in range(1, total_tentativas+1):
     print("Tentativa: {0} de {1}".format(rodada, total_tentativas))
     chute = int(input("Digite o seu numero: "))
 
