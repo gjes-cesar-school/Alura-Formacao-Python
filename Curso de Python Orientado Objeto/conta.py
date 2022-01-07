@@ -15,14 +15,46 @@ class Conta:
         self.__saldo += valor_depositado
     
     def sacar(self, valor_sacado):
-        if(self.__saldo + self.__limite > valor_sacado):
+        if(self.__pode_sacar(valor_sacado)):
             self.__saldo -= valor_sacado
         else:
             print("Saldo insuficiente para saque")
+    
+    def __pode_sacar(self, valor_retirar):
+        valor_disponivel = self.__saldo + self.__limite
+        return valor_disponivel >= valor_retirar
 
     def transferir(self,conta,valor_transferido):
-            if(self.__saldo + self.__limite < valor_transferido):
+            if(self.__pode_sacar(valor_transferido)):
                 self.sacar(valor_transferido)
                 conta.depositar(valor_transferido)
             else:
                 print("Saldo insuficiente para transferencia")
+    
+    @property
+    def numero(self):
+        return self.__numero
+    
+    @property
+    def titular(self):
+        return self.__titular
+
+    @property
+    def saldo(self):
+        return self.__saldo
+    
+    @property
+    def limite(self):
+        return self.__limite
+
+    @limite.setter
+    def limite(self,limite):
+        self.__limite = limite
+
+    @staticmethod
+    def codigo_banco():
+        return "001"
+
+    @staticmethod
+    def codigos_bancos():
+        return {"BB":'001', "Caixa":"104", "Bradesco":"237"}
