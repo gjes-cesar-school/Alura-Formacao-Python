@@ -1,6 +1,6 @@
 from ExtratorArgumentosUrl import ExtratorArgumentosUrl
 
-url = "moedaorigem=moedadestino&moedadestino=dolar"
+url = "www.bitbank.com.br/cambio?moedaorigem=real&moedadestino=dolar&valor=700"
 argumento = ExtratorArgumentosUrl(url)
 print(f"Url validada: {ExtratorArgumentosUrl.url_valida(url)}")
 moeda_origem, moeda_destino = argumento.extrair_argumentos()
